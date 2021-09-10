@@ -1,6 +1,8 @@
 package com.devsuperior.storvendas.services;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.devsuperior.storvendas.dto.SaleDTO;
+import com.devsuperior.storvendas.dto.SaleSumDTO;
 import com.devsuperior.storvendas.entitys.Sale;
 import com.devsuperior.storvendas.repositorys.SaleRepository;
 import com.devsuperior.storvendas.repositorys.SellerRepository;
@@ -27,6 +30,11 @@ public class SaleService {
 		
 		Page<Sale> result = repository.findAll(page);
 		return result.map(x -> new SaleDTO(x));
+	}
+	
+	@Transactional(readOnly = true)
+	public List<SaleSumDTO> amountGroupBySeller(){
+		return repository.amountGroupBySeller();
 	}
 	
 
