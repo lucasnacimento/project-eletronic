@@ -4,14 +4,14 @@ import Chart from 'react-apexcharts';
 import { SaleSum } from 'types/Sale';
 import { BASE_URL } from 'utils/requests';
 
-type CharDate = {
+type ChartDate = {
     labels: string[],
     series: number[]
 }
 
 function DonutChart() {
 
-    const [chartDate, setChartDate] = useState<CharDate>({ labels: [], series: [] });
+    const [chartDate, setChartDate] = useState<ChartDate>({ labels: [], series: [] });
     
     useEffect(() => {
         axios.get(`${BASE_URL}/sales/amount-by-seller`)
