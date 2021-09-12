@@ -78,7 +78,7 @@ function BarChat() {
         ]
     };
     */
-   
+
     return (
         <Chart
             options={{ ...options, xaxis: chartDate.labels }}
